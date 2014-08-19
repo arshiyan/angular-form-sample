@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="entry">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+
+            <div class="row clearfix">
+                <div class="col-md-3 column">
+                </div>
+                <div class="col-md-6 column">
+
+                    <h3 class="text-warning">
+                        Date entry form
+                    </h3>
+
+                    <div class="list-group" ng-controller="PersonController as personsdata">
+                        <a href="#" class="list-group-item active"> Current data </a>
+
+                        <form role="form" name="entry_form" ng-controller="EntryController as entry" ng-submit="entry_form.$valid && entry.addentry(personsdata)">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+                                    <p>Name: {{entry.dentry.username}}</p>
+                                    <p>Gender: {{entry.dentry.gender}}</p>
+                                    <p>Description: {{entry.dentry.body}}</p>
+                                    <p>Level: {{entry.dentry.level}}</p>
+                                    <p>valid: {{entry_form.$valid}}</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username">Full name </label>
+                                <input type="text" class="form-control" name="username" id="username" ng-model="entry.dentry.username" required />
+                            </div>
+                            <div class="form-group">
+
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="inlineRadio1" value="male" ng-model="entry.dentry.gender" required> Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="inlineRadio2" value="female" ng-model="entry.dentry.gender" required> Female
+                                </label>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="radio-inline">
+                                    Description
+                                    <textarea name="body" id="body" class="form-control" rows="3" ng-model="entry.dentry.body" required></textarea>
+                                </label>
+
+
+                            </div>
+
+
+                            <div class="form-group" >
+                                <select class="form-control" name="level" ng-model="entry.dentry.level" required>
+                                    <option value="1">level1</option>
+                                    <option value="2">level2</option>
+                                    <option value="3">level3</option>
+                                    <option value="4">level4</option>
+                                    <option value="5">level5</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Submit</button>
+
+                        </form>
+                        <hr />
+                        <div class="list-group-item" ng-repeat="person in personsdata.persons">
+                            <h4 class="list-group-item-heading">
+                                Item
+                            </h4>
+
+                            <p class="list-group-item-text">Name: {{person.username}}</p>
+                            <p class="list-group-item-text">Gender: {{person.gender}}</p>
+                            <p class="list-group-item-text">Description: {{person.body}}</p>
+                            <p class="list-group-item-text">Level: {{person.level}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 column">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<script src="assets/js/register.js"></script>
+
+</body>
+</html>
